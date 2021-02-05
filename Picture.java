@@ -217,6 +217,42 @@ public class Picture extends SimplePicture
     }
   }
   
+  public void keepOnlyBlue()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    for(int i = 0; i < pixels.length; i++){
+        for(int j = 0; j < pixels[i].length; j++){
+            pixels[i][j].setRed(0);
+            pixels[i][j].setGreen(0);
+        }
+    }
+  }
+  
+  public void negate()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    for(int i = 0; i < pixels.length; i++){
+        for(int j = 0; j < pixels[i].length; j++){
+            Color pixColor = pixels[i][j].getColor();
+            pixels[i][j].setRed(255 - pixColor.getRed());
+            pixels[i][j].setGreen(255 - pixColor.getGreen());
+            pixels[i][j].setBlue(255 - pixColor.getBlue());
+        }
+    }
+  }
+  
+  public void grayscale()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    for(int i = 0; i < pixels.length; i++){
+        for(int j = 0; j < pixels[i].length; j++){
+            int average = (int) pixels[i][j].getAverage();
+            pixels[i][j].setRed(average);
+            pixels[i][j].setGreen(average);
+            pixels[i][j].setBlue(average);
+        }
+    }
+  }
   
   /* Main method for testing - each class in Java can have a main 
    * method 
