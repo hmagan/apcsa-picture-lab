@@ -254,6 +254,36 @@ public class Picture extends SimplePicture
     }
   }
   
+  public void mirrorVerticalRightToLeft()
+  {
+      Pixel[][] pixels = this.getPixels2D();
+      for(int i = 0; i < pixels.length; i++){
+          for(int j = 0; j < pixels[i].length/2; j++){
+              pixels[i][j].setColor(pixels[i][pixels[i].length-1-j].getColor());
+          }
+      }
+  }
+  
+  public void mirrorHorizontal()
+  {
+      Pixel[][] pixels = this.getPixels2D();
+      for(int i = 0; i < pixels.length/2; i++){
+          for(int j = 0; j < pixels[i].length; j++){
+              pixels[pixels.length-1-i][j].setColor(pixels[i][j].getColor());
+          }
+      }
+  }
+  
+  public void mirrorHorizontalBotToTop()
+  {
+      Pixel[][] pixels = this.getPixels2D();
+      for(int i = 0; i < pixels.length/2; i++){
+          for(int j = 0; j < pixels[i].length; j++){
+              pixels[i][j].setColor(pixels[pixels.length-1-i][j].getColor());
+          }
+      }
+  }
+  
   /* Main method for testing - each class in Java can have a main 
    * method 
    */
