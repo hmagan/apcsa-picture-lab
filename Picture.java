@@ -122,24 +122,55 @@ public class Picture extends SimplePicture
   public void mirrorTemple()
   {
     int mirrorPoint = 276;
+    int count = 0;
     Pixel leftPixel = null;
     Pixel rightPixel = null;
-    int count = 0;
     Pixel[][] pixels = this.getPixels2D();
-    
     // loop through the rows
     for (int row = 27; row < 97; row++)
     {
       // loop from 13 to just before the mirror point
       for (int col = 13; col < mirrorPoint; col++)
       {
-        
         leftPixel = pixels[row][col];      
-        rightPixel = pixels[row]                       
-                         [mirrorPoint - col + mirrorPoint];
+        rightPixel = pixels[row][mirrorPoint - col + mirrorPoint];
         rightPixel.setColor(leftPixel.getColor());
+        count++;
       }
     }
+    System.out.println("mirrorTemple iterated " + count + " times.");
+  }
+  
+  public void mirrorArms()
+  {
+      Pixel[][] pixels = this.getPixels2D();
+      int mirrorPoint = 192;
+      //left arm
+      for(int i = 158; i < mirrorPoint; i++){
+          for(int j = 104; j < 170; j++){
+              pixels[mirrorPoint + (mirrorPoint - i)][j].setColor(pixels[i][j].getColor());
+          }
+      }
+      mirrorPoint = 197;
+      //right arm
+      for(int i = 171; i < mirrorPoint; i++){
+          for(int j = 239; j < 295; j++){
+              //subtract 10 to move the arm up 10 pixels
+              //prevents arm from looking like it's hanging off
+              pixels[mirrorPoint + (mirrorPoint - i) - 10][j].setColor(pixels[i][j].getColor());
+          }
+      }
+  }
+  
+  public void mirrorGull()
+  {
+      Pixel[][] pixels = this.getPixels2D();
+      int mirrorPoint = 345;
+      for(int i = 234; i < 322; i++){
+          for(int j = 238; j < mirrorPoint; j++){
+              pixels[i][mirrorPoint + (mirrorPoint - j)].setColor(pixels[i][j].getColor());
+          }
+      }
   }
   
   /** copy from the passed fromPic to the

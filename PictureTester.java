@@ -93,6 +93,20 @@ public class PictureTester
       beach.explore();
   }
   
+  public static void testMirrorArms(){
+      Picture arms = new Picture("snowman.jpg");
+      arms.explore();
+      arms.mirrorArms();
+      arms.explore();
+  }
+  
+  public static void testMirrorGull(){
+      Picture gull = new Picture("seagull.jpg");
+      gull.explore();
+      gull.mirrorGull();
+      gull.explore();
+  }
+  
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
